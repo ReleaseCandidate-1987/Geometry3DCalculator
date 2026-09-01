@@ -1,0 +1,5 @@
+/build/
+/.qtcreator/
+/App/Controls/
+*.blend
+*.qtds
