@@ -15,6 +15,7 @@ import MathSymbols
 MathRoot {
     id: distanceFormula
     color: ColorPalette.foreground
+    font.pointSize: 14
     /* Quadrierte Differenz der X-Koordinaten. */
     MathPower {
         MathParentheses {

@@ -17,14 +17,30 @@ MaterialFrame {
     id: titleBar
     height: 58
     width: Theme.width
-    anchors { left: parent.left; right: parent.right; top: parent.top }
+    anchors { left: parent.left; right: parent.right; top: parent.top; }
+    radius: 0
+
+    /* MouseArea zum Bewegen der TitleBar mit startSystemMove. */
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+
+        onDoubleClicked: window.visibility = window.visibility === Window.Windowed ? Window.Maximized : Window.Windowed
+
+        onPositionChanged: {
+            if ( !pressed )
+                return;
+
+            window.startSystemMove();
+        }
+    }
 
     RowLayout {
         anchors.fill: parent
-
+        anchors.margins: 8
         // Titel der Anwendung
         MaterialLabel {
-            leftPadding: 16
+
             text: Theme.title
             font{ pointSize: 16; bold: true; capitalization: "AllUppercase" }
         }
@@ -41,14 +57,11 @@ MaterialFrame {
 
         // Maximieren / Fensteranzeige.
         MaterialFlatButton {
-            checkable: true
             icon.width: 14; icon.height: 14
-            icon.source: checked ? Icons.show_max : Icons.square
+            icon.source: window.visibility === Window.Maximized ? Icons.show_max : Icons.square
             borderVisible: false
             onClicked: {
-                if ( !checked )
-                    window.showNormal();
-                else window.showMaximized();
+                window.visibility = window.visibility === Window.Windowed ? Window.Maximized : Window.Windowed
             }
         }
 

@@ -3,8 +3,11 @@
         <file>App/App.qml</file>
         <file>App/AppSettings.qml</file>
         <file>App/Components/CalculatorStack.qml</file>
+        <file>App/Components/Formulas/AngleFormula.qml</file>
         <file>App/Components/Formulas/DistanceFormula.qml</file>
         <file>App/Components/Formulas/FormulaPreview.qml</file>
+        <file>App/Components/Formulas/LengthFormula.qml</file>
+        <file>App/Components/Formulas/VelocityFormular.qml</file>
         <file>App/Components/Operations/AngleOperation.qml</file>
         <file>App/Components/Operations/DistanceOperation.qml</file>
         <file>App/Components/Operations/LengthOperation.qml</file>
@@ -77,6 +80,12 @@
         <file>assets/icons/skalar.png</file>
         <file>assets/icons/square.png</file>
         <file>assets/icons/velocity.png</file>
+        <file>Generated/QtQuick3D/Angle/_importdata.json</file>
+        <file>Generated/QtQuick3D/Angle/Angle.qml</file>
+        <file>Generated/QtQuick3D/Angle/meshes/w_rfel_001_mesh.mesh</file>
+        <file>Generated/QtQuick3D/Angle/meshes/w_rfel_002_mesh.mesh</file>
+        <file>Generated/QtQuick3D/Angle/meshes/zylinder_mesh.mesh</file>
+        <file>Generated/QtQuick3D/Angle/qmldir</file>
         <file>Generated/QtQuick3D/Pipe/_importdata.json</file>
         <file>Generated/QtQuick3D/Pipe/meshes/zylinder_002_mesh.mesh</file>
         <file>Generated/QtQuick3D/Pipe/Pipe.qml</file>

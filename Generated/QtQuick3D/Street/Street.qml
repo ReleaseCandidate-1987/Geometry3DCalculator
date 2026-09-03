@@ -1,6 +1,12 @@
 import QtQuick
 import QtQuick3D
 
+/*!
+    Street
+
+    Stellt ein einzelnes Straßensegment mit einer Größe von
+    einem Meter mal einem Meter dar.
+*/
 Node {
     id: street
     scale.x: 100
@@ -8,10 +14,8 @@ Node {
     scale.z: 100
     eulerRotation.y: 90
 
-    // Resources
     property url textureData: "maps/textureData.png"
 
-    // Nodes:
     Model {
         id: fl_che
         objectName: "Fläche"
@@ -41,8 +45,6 @@ Node {
             alphaMode: PrincipledMaterial.Opaque
         }
     }
-
-    // Animations:
 }
 
 /*##^##

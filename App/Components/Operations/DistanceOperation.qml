@@ -4,7 +4,6 @@ import QtQuick.Layouts
 
 import "../../Controls"
 import "../Formulas"
-import MathSymbols
 
 /*!
     DistanceOperation

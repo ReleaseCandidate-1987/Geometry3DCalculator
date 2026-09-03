@@ -6,6 +6,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
+    engine.addImportPath(QStringLiteral(CUSTOM_QML_IMPORT_PATH));
     engine.addImportPath(":/");
     const QUrl url(QStringLiteral("qrc:/main.qml"));
 

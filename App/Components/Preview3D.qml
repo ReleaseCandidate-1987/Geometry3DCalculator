@@ -22,7 +22,7 @@ Item {
     View3D {
         id: view3D
         anchors.fill: parent
-
+        focus: true
         environment: ExtendedSceneEnvironment {
 
             // Kantenglättung.
@@ -43,6 +43,12 @@ Item {
             }
         }
 
+        WheelHandler {
+            onWheel: function( ev ) {
+                view3DCamera.zoom( ev.angleDelta.y / 120 )
+            }
+        }
+
         /* Zeigt ein Grid in der Szene. */
         AxisHelper {
             id: axisHelper
@@ -53,13 +59,30 @@ Item {
         }
 
         camera: PerspectiveCamera {
-            id: perspectiveCamera
+            id: view3DCamera
             x: -305.252
             y: 231.646
             eulerRotation.z: 0
             eulerRotation.y: -40.16772
             eulerRotation.x: -23.83386
             z: 423.79648
+            lookAtNode: operationLoader.item
+
+            property real zoomStep: 50
+            property real minimumDistance: 100
+            property real maximumDistance: 2000
+
+            function zoom ( direction ) {
+                if ( !operationLoader.item )
+                    return;
+
+                const targetPosition = operationLoader.item.scenePosition;
+                const cameraOffset = position.minus( targetPosition );
+                const currentDistance = cameraOffset.length();
+
+                const newDistance = Math.max( minimumDistance,  Math.min( maximumDistance, currentDistance - direction * zoomStep ) );
+                position = targetPosition.plus(cameraOffset.normalized().times(newDistance))
+            }
         }
 
         DirectionalLight {
@@ -76,20 +99,20 @@ Item {
         Loader3D {
             id: operationLoader
             sourceComponent: [
-                            lengthComponent,
-                            distanceComponent,
-                            angleComponent,
-                            rotationComponent,
-                            skalarComponent,
-                            velocityComponent
-                        ][appSettings.currentIndex]
+                lengthComponent,
+                distanceComponent,
+                angleComponent,
+                //rotationComponent,
+                //skalarComponent,
+                velocityComponent
+            ][appSettings.currentIndex]
         }
 
         Component { id: lengthComponent; LengthNode { id: lengthNode } }
         Component { id: distanceComponent; DistanceNode { id: distanceNode } }
         Component { id: angleComponent; AngleNode { id: angleNode } }
-        Component { id: rotationComponent; RotationNode { id: rotationNode } }
-        Component { id: skalarComponent; SkalarNode { id: skalarNode } }
+        //Component { id: rotationComponent; RotationNode { id: rotationNode } }
+        //Component { id: skalarComponent; SkalarNode { id: skalarNode } }
         Component { id: velocityComponent; VelocityNode { id: velocityNode } }
     }
 
@@ -100,6 +123,13 @@ Item {
             id: principledMaterial
             objectName: "New Material"
         }
+    }
+
+    BusyIndicator {
+        width: 300
+        height: 300
+        anchors.centerIn: parent
+        running: operationLoader.status === Loader3D.Loading
     }
     
 }

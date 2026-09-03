@@ -10,7 +10,6 @@ AnimatedNode {
     property alias cubeA: cubeA
     property alias cubeB: cubeB
 
-
     Cube {
         id: cubeA
         text: "Cube A"
@@ -28,6 +27,7 @@ AnimatedNode {
     DistanceLine {
         from: cubeA.position
         to: cubeB.position
+        text: calculatorStack.distanceOperation.distance + "m"
     }
 
     Node {

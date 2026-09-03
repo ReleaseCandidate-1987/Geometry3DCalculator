@@ -19,7 +19,7 @@ MaterialFrame {
     id: selectionBar
     height: clayout.implicitHeight + 16
     width: 58
-    anchors.left: parent.left
+    anchors.right: calculatorStack.left
     anchors.top: titleBar.bottom
 
     anchors.margins: 8
@@ -55,8 +55,8 @@ MaterialFrame {
                 { name: "Länge", icon: Icons.length },
                 { name: "Abstand", icon: Icons.distance },
                 { name: "Winkel", icon: Icons.angle },
-                { name: "Rotation", icon: Icons.rotation },
-                { name: "Skalarprodukt", icon: Icons.skalar },
+                //{ name: "Rotation", icon: Icons.rotation },
+                //{ name: "Skalarprodukt", icon: Icons.skalar },
                 { name: "Geschwindigkeit", icon: Icons.velocity },
             ]
 

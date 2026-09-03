@@ -13,7 +13,7 @@ import "Operations"
 */
 MaterialFrame {
     id: calculatorStack
-    width: 330
+    width: 360
 
     anchors {
         right: parent.right; top: titleBar.bottom; bottom: parent.bottom;
@@ -23,8 +23,8 @@ MaterialFrame {
     property alias lengthOperation: lengthOperation
     property alias distanceOperation: distanceOperation
     property alias angleOperation: angleOperation
-    property alias rotationOperation: rotationOperation
-    property alias skalarOperation: skalarOperation
+    //  property alias rotationOperation: rotationOperation
+    //  property alias skalarOperation: skalarOperation
     property alias velocityOperation: velocityOperation
 
     /* Zeigt die ausgewählte Rechenoperation an. */
@@ -42,10 +42,10 @@ MaterialFrame {
         AngleOperation { id: angleOperation }
 
         /* Berechnung der Rotation */
-        RotationOperation { id: rotationOperation }
+        //RotationOperation { id: rotationOperation }
 
         /* Berechnung des Skalarproduktes */
-        SkalarOperation { id: skalarOperation }
+        //SkalarOperation { id: skalarOperation }
 
         /* Berechnung der Geschwindigkeit */
         VelocityOperation { id: velocityOperation }
